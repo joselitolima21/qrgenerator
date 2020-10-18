@@ -16,7 +16,7 @@
 
 .show-div {
     display: grid;
-    margin-top: 100px;
+    margin-top: 70px;
     width: 1000px;
     height: 550px;
     grid-template-rows: 38px 1fr;

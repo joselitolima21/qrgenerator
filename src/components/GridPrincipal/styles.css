@@ -1,4 +1,146 @@
 .grid-principal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     background: #FBFBFB;
     border-radius: 18px;
+    grid-area: "left right";
+    padding: 28px;
+}
+
+.left h1 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 32px;
+    color: #7E7E7E;
+    margin-bottom: 10px;
+}
+
+.name-input {
+    width: 340px;
+    height: 38px;
+    border: 1px solid #949494;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.pick-color {
+    width: 203px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    background-color: #FFFFFF;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 1px 1px 6px 0px rgba(77,77,77,0.75);
+    -moz-box-shadow: 1px 1px 6px 0px rgba(77,77,77,0.75);
+    box-shadow: 1px 1px 6px 0px rgba(77,77,77,0.75);
+}
+
+
+.label-color {
+    width: 63px;
+    height: 50px;
+}
+
+.box-color {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    visibility: hidden;
+}
+
+.text-color {
+    width: 150px;
+    height: 50px;
+    border-left: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 30px;
+    color: #7E7E7E;
+    text-align: center;
+    border: none;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin-bottom: 20px;
+}
+
+.line-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.line-option label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    color: #7E7E7E;
+}
+
+.select {
+    margin-right: 10px;
+}
+
+.logo-input {
+    display: flex;
+}
+
+.blue-button { 
+    width: 125px;
+    height: 35px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #25283D;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    color: #F8F7F9;
+    margin-left: 20px;
+}
+
+.logo-examples {
+    margin-top: 20px;
+}
+
+.logosTeste {
+    margin-right: 20px;
+    width: 70px;
+    height: 70px;
+}
+
+.download-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons-download {
+    display: flex;
+    margin-top: 15px;
+}
+
+.buttons-download .white-button {
+    margin-right: 15px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qrcode {
+    border: 1px solid #25283D;
+    margin-bottom: 10px;
 }
