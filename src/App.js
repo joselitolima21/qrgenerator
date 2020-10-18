@@ -1,7 +1,9 @@
 import React, {useRef,useEffect} from 'react';
 import NavBar from './components/NavBar'
 import QRCode from 'qrcode'
-import image from './images/logo-example.png'
+//import image from './images/logo-example.png'
+import InputOptions from './components/InputOptions'
+import GridPrincipal from './components/GridPrincipal'
 
 function App() {
 
@@ -47,11 +49,18 @@ function App() {
   return (
     <>
      <NavBar/>
-     <input type="text" onChange={(event)=>updateQr(event)}/>
-     <canvas id='qrdiv' ref={qrDiv}/>
-     <img src={image} alt='' ref={img} style={{display: 'none'}}/>
+      <div className='show-div'>
+        <InputOptions/>
+        <GridPrincipal/>
+      </div>
     </>
   );
 }
 
 export default App;
+
+/*
+     <input type="text" onChange={(event)=>updateQr(event)}/>
+     <canvas id='qrdiv' ref={qrDiv}/>
+     <img src={image} alt='' ref={img} style={{display: 'none'}}/>
+*/
