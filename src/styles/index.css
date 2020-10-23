@@ -23,3 +23,57 @@
     grid-area: "input-options"
                "grid-principal";
 }
+
+.blue-button { 
+    width: 125px;
+    height: 35px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #25283D;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    color: #F8F7F9;
+    margin-left: 20px;
+}
+
+.blue-button:hover {
+    cursor: pointer;
+    background-color: #1d1f30;
+    transform: translate(-1px,1px);
+    transition: 0.2s;
+}
+
+.blue-button:focus {
+    outline: none;
+}
+
+.blue-button:active {
+    outline: none;
+}
+
+.white-button { 
+    width: 140px;
+    height: 40px;
+    border: 1px solid #25283D;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: #FBFBFB;
+}
+
+.white-button:hover {
+    cursor: pointer;
+    background-color: #f1f0f0;
+    transform: translate(-1px,1px);
+    transition: 0.2s;
+}
+
+.white-button:focus {
+    outline: none;
+}
+
+.white-button:active {
+    outline: none;
+}

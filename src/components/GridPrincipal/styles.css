@@ -23,6 +23,7 @@
     box-sizing: border-box;
     border-radius: 5px;
     margin-bottom: 10px;
+    padding-left: 10px;
 }
 
 .pick-color {
@@ -44,6 +45,9 @@
     height: 50px;
 }
 
+.label-color:hover {
+    cursor: pointer;
+}
 .box-color {
     position: absolute;
     left: 0px;
@@ -87,29 +91,70 @@
 
 .select {
     margin-right: 10px;
+    background-color: #25283D;
 }
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -3px;
+    left: -3px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -3px;
+    left: -3px;
+    position: relative;
+    background-color: #d1d3d1;
+    background-image: radial-gradient(#25283D, #25283D 35%, transparent 50%);
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
 
 .logo-input {
     display: flex;
 }
 
-.blue-button { 
-    width: 125px;
-    height: 35px;
-    border: none;
-    box-sizing: border-box;
-    border-radius: 10px;
-    background-color: #25283D;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 20px;
-    color: #F8F7F9;
-    margin-left: 20px;
-}
 
 .logo-examples {
     margin-top: 20px;
+}
+
+#insta:hover {
+    transform: translate(-1px,1px);
+    transition: 2ms;
+    cursor: pointer;
+}
+
+#face:hover {
+    transform: translate(-1px,1px);
+    transition: 2ms;
+    cursor: pointer;
+}
+
+#twiter:hover {
+    transform: translate(-1px,1px);
+    transition: 2ms;
+    cursor: pointer;
+}
+
+#twitch:hover {
+    transform: translate(-1px,1px);
+    transition: 2ms;
+    cursor: pointer;
 }
 
 .logosTeste {
@@ -143,4 +188,13 @@
 .qrcode {
     border: 1px solid #25283D;
     margin-bottom: 10px;
+}
+
+.blue-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-upload {
+    display: none;
 }
