@@ -27,8 +27,8 @@ function GridPrincipal() {
       QRCode.toCanvas(canvas,inputToQr, { 
                                                     errorCorrectionLevel: 'H',
                                                     margin: 2,
-                                                    width: 300,
-                                                    height: 300,
+                                                    width: 250,
+                                                    height: 250,
                                                     color: {
                                                       dark: !colorInvalid ? color : '#060505',
                                                       light: '#ffff'

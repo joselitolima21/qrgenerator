@@ -1,0 +1,117 @@
+@media (min-width: 300px) { 
+    .show-div {
+        width: 100%;
+    }
+    .input-options {
+        width: 86%;
+    }
+    .grid-principal {
+        width: 86%;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        background: #FBFBFB;
+        border-radius: 18px;
+        grid-template-areas: "left"
+                   "right";
+        padding: 30px;
+        justify-self: center;
+        justify-content: center;
+    }
+    .right {
+        margin-top: 20px;
+    }
+    .nav-bar h1 {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 480px) { 
+    .show-div {
+        width: 460px;
+    }
+    .grid-principal {
+        width: 440px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        background: #FBFBFB;
+        border-radius: 18px;
+        grid-template-areas: "left"
+                   "right";
+        padding: 28px;
+    }
+    .right {
+        margin-top: 20px;
+    }
+    .nav-bar h1 {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 576px) {
+    .show-div {
+        width: 560px;
+    }
+    .grid-principal {
+        width: 540px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        background: #FBFBFB;
+        border-radius: 18px;
+        grid-template-areas: "left"
+                   "right";
+        padding: 28px;
+    }
+    .right {
+        margin-top: 20px;
+    }
+    .nav-bar h1 {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 746px) { 
+    .show-div {
+        width: 746px;
+    }
+    .grid-principal {
+        width: 734px;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        background: #FBFBFB;
+        border-radius: 18px;
+        grid-template-areas: "left right";
+        padding: 28px;
+    }
+    .right {
+        margin-top: 0px;
+    }
+    .nav-bar h1 {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 873px) {
+    .show-div {
+        width: 873px;
+    }
+    .grid-principal {
+        width: 840px;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        background: #FBFBFB;
+        border-radius: 18px;
+        grid-template-areas: "left right";
+        padding: 28px;
+    }
+    .right {
+        margin-top: 0px;
+    }
+    .nav-bar h1 {
+        font-size: 30px;
+    }
+}

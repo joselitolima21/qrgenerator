@@ -20,8 +20,10 @@
     width: 1000px;
     height: 550px;
     grid-template-rows: 38px 1fr;
-    grid-area: "input-options"
+    grid-template-areas: "input-options"
                "grid-principal";
+    align-items: center;
+    justify-content: center;
 }
 
 .blue-button { 

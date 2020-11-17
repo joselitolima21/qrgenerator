@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr;
     background: #FBFBFB;
     border-radius: 18px;
-    grid-area: "left right";
+    grid-template-areas: "left right";
     padding: 28px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .name-input {
-    width: 340px;
+    width: 250px;
     height: 38px;
     border: 1px solid #949494;
     box-sizing: border-box;
