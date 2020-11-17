@@ -3,71 +3,66 @@ import './styles.css'
 import logoExample from '../../images/logo-example.png'
 import facebook from '../../images/facebook.png'
 import instagram from '../../images/instagram.png'
-import twitch from '../../images/twitch.png'
 import twiter from '../../images/twiter.png'
 import QRCode from 'qrcode'
+import { jsPDF } from 'jspdf'
 
 
 function GridPrincipal() {
 
-  // Qr 
   const qrCanvas = useRef(null)
   const img = useRef(null)
-  
-  const options = { 
-    errorCorrectionLevel: 'H',
-    margin: 2,
-    width: 300,
-    height: 300,
-    color: {
-      dark:'#000000',
-      light: '#ffff'
-    }  
-  }
-
   const [color,setColor] = useState('#060505')
   const [inputToQr,setInputToQr] = useState('https://www.seusite.com')
   const [selectLogo,setSelectLog] = useState('no-logo')
   const [pathLogo,setPathLogo] = useState(logoExample)
+  const [colorInvalid,setColorInvalid] = useState(false)
 
   useEffect(()=>{
     const image = img.current
     const canvas = qrCanvas.current
-    const tam = canvas.width/4.5
+    const tam = canvas.width/4
     const distance = canvas.width/2-tam/2
-    QRCode.toCanvas(qrCanvas.current,'https://www.seusite.com', options, (err, canvas) => {
-      if (err) throw err      
-    })
-    const ctx = canvas.getContext('2d')
-    ctx.drawImage(image,0,0,image.width,image.height,distance,distance,tam,tam)
-
-  },[]) // eslint-disable-line
-
-  function updateQr(text) {
-    const image = img.current
-    const canvas = qrCanvas.current
-    const tam = canvas.width/4.5
-    const distance = canvas.width/2-tam/2
-    if(text) {
-      QRCode.toCanvas(canvas,text, options, (err, canvas) => {
-        if (err) throw err
+    if(inputToQr) {
+      QRCode.toCanvas(canvas,inputToQr, { 
+                                                    errorCorrectionLevel: 'H',
+                                                    margin: 2,
+                                                    width: 300,
+                                                    height: 300,
+                                                    color: {
+                                                      dark: !colorInvalid ? color : '#060505',
+                                                      light: '#ffff'
+                                                    }  
+                                                  }, 
+      (err, canvas) => {
+        if (err) throw err      
+      })
+      if(selectLogo === 'logo'){
         const ctx = canvas.getContext('2d')
         ctx.drawImage(image,0,0,image.width,image.height,distance,distance,tam,tam)      
-      })
-    }
-      
+      }
   }
-  // Qr 
 
+  },[color,inputToQr,pathLogo,selectLogo,colorInvalid])
+
+  // Atualiza o texto
   function handleSetInputQr(event) {
     setInputToQr(event.target.value)
-    updateQr(event.target.value)
   }
-
+  
+  // Atualiza a cor
   function changeColor(event) {
-    setColor(event.target.value)
+    const validateColorHex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
+    if(validateColorHex.exec(event.target.value)) {
+      setColor(event.target.value)
+      setColorInvalid(false)
+    } else {
+      setColor(event.target.value)
+      setColorInvalid(true)
+    }
   }
 
+  // Adiciona a logo
   function handleLogoUp(event) {
     if (event.target.files[0]) {
       let reader = new FileReader();
@@ -75,18 +70,40 @@ function GridPrincipal() {
 
       reader.onloadend = () => {
         setPathLogo(reader.result)
-        updateQr(inputToQr)
       }
 
       reader.readAsDataURL(file)
     }
   }
 
+  // Faz o download do qrCode
+  function handleDownload(tipo){
+      if(tipo === 'png' || tipo === 'jpg'){
+        const image = qrCanvas.current.toDataURL(`image/${tipo}`).replace(`image/${tipo}`, "image/octet-stream");
+        const a = document.createElement("a");
+        a.href = image; 
+        a.download = `qrcode.${tipo}`;
+        a.click();
+      } else if(tipo === 'svg'){
+        const image = qrCanvas.current.getContext('2d').getSerializedSvg()
+        //(`image/${tipo}`).replace(`image/${tipo}`, "image/octet-stream");
+        const a = document.createElement("a");
+        a.href = image; 
+        a.download = `qrcode.${tipo}`;
+        a.click();
+      } else if(tipo === 'pdf') {
+        const image =  qrCanvas.current.toDataURL("image/jpeg", 1.0);
+        const pdf = new jsPDF();
+        pdf.addImage(image, 'JPEG', 0, 0);
+        pdf.save(`qrcode.${tipo}`);
+      }
+  }
+
   return (
     <div className='grid-principal'>
       <div className="left">
         
-        <h1>Digite seu url</h1>
+        <h1>Digite o que quiser!</h1>
         <input 
           type="text"  
           className="name-input" 
@@ -98,7 +115,7 @@ function GridPrincipal() {
 
         <div className="pick-color">
           <label htmlFor='box' className='label-color' style={{ backgroundColor:color}}/>
-          <input type="color" value={color} onChange={(event)=>changeColor(event)} className="box-color" id='box'/>
+          <input type="color" defaultValue={color} onChange={(event)=>changeColor(event)} className="box-color" id='box'/>
           <input type="text" className="text-color" onChange={(event)=>changeColor(event)} value={color}/>
         </div>
 
@@ -131,20 +148,13 @@ function GridPrincipal() {
 
         <div className="logo-examples">
           <img onClick={()=> {  setPathLogo(facebook)
-                                img.current.src = facebook;
-                                updateQr(inputToQr)}} 
+                              }} 
             src={facebook} alt="logo-example" id='face' className='logosTeste'/>
           <img onClick={()=> {  setPathLogo(twiter)
-                                img.current.src = twiter;
-                                updateQr(inputToQr)}} 
+                              }} 
             src={twiter} alt="logo-example" id='twiter'className='logosTeste'/>
-          <img onClick={()=> {  setPathLogo(twitch) 
-                                img.current.src = twitch;
-                                updateQr(inputToQr)}} 
-            src={twitch} alt="logo-example" id='twitch' className='logosTeste'/>
-          <img onClick={()=> {  setPathLogo(instagram) 
-                                img.current.src = instagram;
-                                updateQr(inputToQr)}} 
+          <img onClick={()=> {  setPathLogo(instagram)
+                              }} 
             src={instagram} alt="logo-example" id='insta' className='logosTeste'/>
         </div>
  
@@ -157,12 +167,11 @@ function GridPrincipal() {
         <div className='download-section'>
             <h1>DOWNLOAD</h1>
             <div className='buttons-download'>
-              <button className='white-button'>PNG</button>
-              <button className='white-button'>SVG</button>
+              <button className='white-button neg' onClick={()=>handleDownload('png')} >PNG</button>
             </div>
             <div className='buttons-download'>
-              <button className='white-button'>PDF</button>
-              <button className='white-button'>JPG</button>
+              <button className='white-button neg' onClick={()=>handleDownload('pdf')} >PDF</button>
+              <button className='white-button neg' onClick={()=>handleDownload('jpg')} >JPG</button>
             </div>
         </div>
       </div>
@@ -170,4 +179,5 @@ function GridPrincipal() {
   )
 }
 
+// <button className='white-button' onClick={()=>handleDownload('svg')} >SVG</button>
 export default GridPrincipal;

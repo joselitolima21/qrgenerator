@@ -77,3 +77,7 @@
 .white-button:active {
     outline: none;
 }
+
+.neg {
+    font-weight: bold;
+}
